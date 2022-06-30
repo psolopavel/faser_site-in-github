@@ -1,0 +1,524 @@
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd,
+a {
+  margin: 0;
+  text-decoration: none;
+  color: black;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+.wrapper{
+    min-height: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    display: flex;
+}
+}
+
+._conteiner {
+  max-width: 1500px;
+  margin: 0px auto;
+  display: flex;
+  padding: 0px 31px;
+  min-height: 75px;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 50;
+  background-color: #EEFFEF;
+  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+  position: fixed;
+}
+.left {
+  display: flex;
+  padding-left: 237px;
+  align-items: center;
+}
+.right{
+  padding-left: 388px;
+
+}
+.logo {
+  padding-right: 31px;
+}
+.left_site-name {
+  font-size: 18px;
+}
+.menu_item{
+  color: #929292;
+  font-family: Montserrat;
+  font-weight: 500;
+}
+.menu_item1 {
+  padding-right: 84px;
+  color: black;
+}
+
+@media all and (max-width: 1242px) {
+  .right{
+    padding-left: 200px;
+  
+  }
+  
+}
+@media all and (max-width: 1053px) {
+  .right{
+    padding-left: 100px;
+  
+  }
+  
+}
+@media all and (max-width: 953px) {
+  .left{
+    padding-left: 40px;
+  
+  }
+  .menu_item{
+    display: block;
+  }
+}
+@media all and (max-width: 603px) {
+  .left{
+    padding-left: 10px;
+    
+  }
+  .left_site-name{
+    display: none;
+  }
+  .logo {
+    padding-right: 10px;
+  }
+}
+@media all and (max-width: 388px) {
+  .logo {
+    padding-right: 10px;
+  }
+  ._conteiner{
+    padding: 0px 2px;
+  }
+}
+/* .icons_window{
+  position: fixed;
+} */
+
+/*sitebar*/
+.image_pink{
+  position: absolute;
+  margin: 80px 0px 0px 190px;
+
+}
+
+.image_pink.active{
+  display: none;
+}
+
+.sitebar{
+  width: 220px;
+  height: 100%;
+  position: absolute;
+  transition: all 0.3 ease 2s;
+  left: 0;
+  top: 0;
+  z-index: 51;
+  background-color: #FAFAFA;
+  box-shadow: 10px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.sitebar.active{
+  top: -170%;
+}
+.search {
+  padding: 25px 5px;
+  display: flex;
+}
+.seach_input {
+  border-radius: 30px;
+  max-width: 180px;
+  background-color: #F7FFE5;
+}
+.search_img {
+  display: block;
+}
+
+.menu_item1:hover{
+  color: black;
+}
+.menu_item:hover{
+  color: black;
+}
+
+.filter-item {
+  color: #929292;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  text-align: center;
+}
+.box_shadov1{
+  background-color: #D9D9D9;
+  width: 100%;
+  height: 1px;
+  box-shadow: 2px 2px 7px #b1b0b0;
+}
+.box_shadov2{
+  background-color: #D9D9D9;
+  width: 100%;
+  height: 1px;
+  box-shadow: 2px -3px 7px #b1b0b0;
+}
+.filter-item_name {
+  padding: 40px 0px;
+  text-align: center;
+}
+.check-box {
+  padding-left: 15px;
+}
+
+.sitebar_menu_items {
+    padding-bottom: 24px;
+}
+
+.cheked:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+.item-checbox {
+  color: #323232;
+  font-family: Montserrat;
+  font-weight: 300;
+  font-size: 14px;
+}
+.main{
+  display: flex;
+  flex-wrap: wrap;
+}
+.icons_window{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0px;
+  z-index: 100;
+}
+.theme{
+  cursor: pointer;
+  background-color: white;
+  padding: 7px;
+  border-radius: 50px;
+}
+
+.main-block {
+  padding: 102px 57px 170px 257px;
+}
+.flex{
+  display: flex;
+}
+.content {
+  background-color: #869671;
+  position: absolute;
+  width: 216px;
+  height: 249px;
+  border-radius: 20px;
+  border: 2mm ridge rgba(211, 220, 50, .6);
+  box-shadow: 35px 10px 4px rgba(0, 0, 0, 0.25);
+  flex-wrap: wrap;
+}
+.content_image {
+  border-radius: 15px;
+}
+
+.content_category {
+  padding-right: 30px;
+  padding-left: 15px;
+  font-weight: 400;
+  font-family: Montserrat;
+  max-width: 172px;
+}
+.price {
+  padding-left: 2px;
+}
+.too{
+  padding-top: 15px;
+}
+.cotent_button {
+  margin-left: 20%;
+  background-color: #B7B5BD;
+  padding: 4px 25px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-family: 'Open Sans';
+}
+.image_pink:hover{
+  opacity: 0.3;
+}
+#black{
+  background-color: black;
+}
+/* .sitebar.active.sitebar{
+  transition: all 0.3s ease 0s;
+  top: 0;
+} */
+
+
+@media all and (max-width: 500px) {
+  .main-block{
+    padding: 102px 157px 170px 100px;
+  }
+}
+@media all and (max-width: 355px) {
+  .main-block{
+    padding: 102px 157px 170px 50px;
+  }
+}
+/*------------------------footer------------------------*/
+
+
+.cinteiner-footer{
+    padding: 14px 5px;
+    display: flex;
+}
+.footer_conteiner.active{
+  display: none;
+}
+.footer_conteiner {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding:5px 0px 0px 220px;
+  background-color: #262626;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+.footer_image {
+  padding-right: 40px;
+  align-items: center;
+}
+.foter_left-cntent {
+  align-items: center;
+}
+.item_foter_content {
+  color: white;
+}
+.foter_right-cntent{
+  display: flex;
+  color: white;
+  padding-left: 5%;
+}
+.wile_EN {
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+.black_RU {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+#flex_footer{
+  padding-right: 20px;
+  padding-left: 43px;
+}
+.image_right{
+  padding: 9px;
+  border-radius: 50px;
+  background-color: white;
+}
+@media all and (max-width: 1047px) {
+  #flex_footer{
+    padding-right: 40px;
+  }
+}
+@media all and (max-width: 910px) {
+  .foter_right-cntent{
+    display: flex;
+    color: white;
+    padding-left: 10%;
+  }
+}
+@media all and (max-width: 1052px) {
+  .footer_conteiner {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding:5px 0px 0px 20px;
+    background-color: #262626;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+  }
+}
+@media all and (max-width: 570px) {
+  .footer_image {
+    display: none;
+  } 
+}
+@media all and (max-width: 480px) {
+  .foter_right-cntent{
+    display: grid;
+    color: white;
+    padding-left: 10%;
+  }
+}
+
+@media all and (max-width: 747px) {
+  .footer_image {
+    display: none;
+
+  }
+}
+@media all and (max-width: 850px) {
+  .menu_item {
+    padding-right: 10px;
+
+  }
+}
+@media all and (max-width: 481px) {
+    .left{
+      display: none;
+  }
+    .right{
+      padding-left: 5px;
+  }
+}
+.pagin{
+  position: absolute;
+  left: 650px;
+  top: 600px;
+  z-index: 10;
+}
+.item-checbox.darc{
+  color: white;
+}
+.grid-img-right{
+  padding: 0px 0px 100px 150px;
+  z-index: 10;
+}
+
+@media all and (max-width: 913px) {
+    .pagin{
+      left: 300px;
+    }
+}
+@media all and (max-width: 550px) {
+    .pagin{
+      left: 150px;
+    }
+}
+@media all and (max-width: 390px) {
+    .pagin{
+      left: 0px;
+    }
+}
+
+@media all and (max-width: 1185px) {
+    .foter_right-cntent{
+      padding-left: 0px;
+    }
+}
+@media all and (max-width: 857px) {
+  .footer_image{
+    display: none;
+  }
+}
+.subscribe_form{
+  padding-left: 20px;
+}
+@media all and (max-width: 771px) {
+  .subscribe_form{
+    padding-left: 20px;
+  }
+}
+@media all and (max-width: 758px) {
+  .foter_left-cntent{
+    display: none;
+  }
+}
+@media all and (max-width: 478px) {
+  .subscribe_form{
+    padding-left: 0px;
+  }
+  #flex_foote{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media all and (max-width: 435px) {
+  .schange-theme{
+    height: 10px;
+  }
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+{% load static %}
+{% load static i18n %}
+{% load static recaptcha3 %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/MORE.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    {% recaptcha_init %}
+    {% recaptcha_ready action_name='homepage' %}
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+        <div class="sitebar">
+            <div class="main-image_sitebar" style="padding: 10px 0px 0px 10px;">
+                <img src="{{ product.poster.url }}" alt="" style="border-radius: 10px; border: 2px solid rgb(69, 66, 66);">
+            </div>
+            <div class="conteiner-sitebar_MORE">
+                <p class="items_sitebar_MORE">{% trans 'относетца к котегорий' %}:<em>{% for category in product.category.all %} {{ category.name }} {% endfor %}</em></p>
+                <p class="items_sitebar_MORE">{% trans 'цена' %}: {{ product.price }}$</p>
+                <p class="items_sitebar_MORE">{% trans 'находитса в магазине' %}: {{ product.Shop_name }}</p>
+                <p class="items_sitebar_MORE">{% trans 'Название' %}:  {{ product.title }}</p>
+                <p class="items_sitebar_MORE">{% trans 'Краткае описание продукта' %}: {{ product.descriptin|safe }}</p>
+                <p class="items_sitebar_MORE">{% trans 'продовец' %}: {% for salesman in product.salesman.all %}<a href="{% url 'salesman_detail' salesman.name %}" style="color: #902b2b"> {{ salesman.name }} </a>{% endfor %}</p>
+            </div>
+        </div>
+           {% include 'include/header.html' %}
+    <div style="padding-top: 100px;">
+    <div class="slider">
+        <div class="slide_show">
+            {% for image in product.product_shorts_set.all %}
+                <div class="my-slader">
+                    <div style="padding-left: 200px"><div class="numbertext">{% trans 'всево' %} {{ product.product_shorts_set.count }} {% trans 'кадра' %}</div></div>
+                    <div style="padding-left: 36%"><img src="{{ image.image.url }}" alt="{{ image.description }}" style="border-radius: 10px; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat"></div>
+                    <div class="text">{{ image.title }}</div>
+                </div>
+            {% endfor %}
+            <a class="prev" onclick="plusSlides(-1)">&#10094</a>
+            <a class="next" onclick="plusSlides(1)">&#10095</a>
+        </div>
+        <br>
+        <div style="text-align: center;">
+            {% for image in product.product_shorts_set.all %}
+                <span class="dot" onclick="currentSlide(1)"></span>
+            {% endfor %}
+        </div>
+        {% include 'include/footer.html' %}
+        </div>
+        <div style="padding: 10px; background-color: #F7FFE5">
+            <p>{% trans 'номер продовца' %}:  0{{ product.number }}</p>
+            <div style="padding-bottom: 40px" class="par">
+                <img src="{% static 'img/par.png' %}" height="50px" width="70px" style="float: right; border-radius: 30px" class="paro">
+            </div>
+            <script>
+                gsap.to(".par",{
+                    x: -1520,
+                    duration: 3,
+                    delay: .5,
+                    y: -2,
+                    repeat: 1,
+                });
+                  gsap.to(".paro",{
+                    duration: 3,
+                    background: 'orange',
+                    repeat: 1,
+                });
+            </script>
+        </div>    
+        <form method="post" action="{% url 'add_purchase' product.id %}">
+            {% csrf_token %}
+            <div class="buy_action">
+                <div class="number">
+                   <label class="name" for="contactnumber">
+                       {% trans 'оставить заявку' %}
+                   </label>
+                   <div style="padding-top: 20px; padding-bottom: 20px">
+                   <input type="tel" placeholder="штоб оставить заявку ведите номер(telj)" style="width: 300px" name="room"  required="">
+                   </div>
+                </div>
+                <div style="padding-bottom: 30px;">
+                    <button type="submit" class="btn">{% trans 'оставить заявку на покупку' %}</button>
+                </div>
+            </div>
+        </form>
+            <div style="display: flex">
+                <form method="post" action="{% url 'add_review' product.id %}" id="formReview">
+                    {% csrf_token %}
+                    <input type="hidden" name="parent" id="contactparent" value="">
+                    <div class="coment">
+                        <div class="conteiner_coment">
+                            <div class="my_coment" style="padding: 0px 0px 30px 30px;">
+                                <div style="padding-bottom: 19px; padding-top: 51px;">
+                                    <label class="name" style="width: 300px;
+                                           padding-left: 30px;  background-color: sienna" for="contactusername">
+                                        {% trans 'Имя' %}
+                                    </label>
+                                    {{ form.name }}
+                                </div>
+                                <div>
+                                     <label class="name" style="width: 300px;
+                                           padding-left: 30px;  background-color: sienna" for="contactemail">
+                                        email *
+                                    </label>
+                                    {{ form.email }}
+                                </div>
+                                <div class="text_coment">
+                                    <label class="name" style="width: 300px; padding-left: 30px; background-color: sienna">{% trans 'сообщение' %}</label>
+                                    {{ form.text }}
+                                </div>
+                                {{ form.captcha }}
+                                <button type="submit" class="buton_form" style="    background-color: aquamarine;
+                padding: 5px;
+                border-radius: 15px;
+                border: 2px solid #869671;">{% trans 'отправить' %}</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class='radinc_conteiner'>
+                 <form action="{% url 'add_rating' %}" method="post" name="rating" style="background-color: #F7FFE5; padding: 10px">
+                     <b>{% trans 'нраветца ли вам' %} {% for category in product.category.all %} {{ category.name }} {% endfor %}</b>
+                     {% csrf_token %}
+                     <input type="hidden" value="{{ product.id }}" name="product">
+                      <div style="display: flex; padding-left: 100px">
+                             <p style="padding-right: 15px">да</p>
+                             <p>нет</p>
+                      </div>
+                     <span class="rating">
+                         {% for k, v in star_form.fields.star.choices %}
+                            <input id="rating{{ v }}" type="radio" name="star" value="{{ k }}">
+                            <label for="rating{{ v }}">{{ k }}</label>
+                         {% endfor %}
+                     </span>
+                     <p>{% trans 'всево' %} {{ product.rating_set.count }} {% trans 'проголосовавших' %}</p>
+                 </form>
+                </div>
+            </div>
+
+            {% trans 'всево' %} {{ product.reviews_set.count }} {% trans 'коментариев' %}
+            {% for review in product.get_review %}
+            <div class="coment-otsef" style="padding-left: 30px; background-color: #869671; border: 2px solid #000000">
+                    <div style="">name: {{ review.name }}</div>
+                    <div style="padding: 30px 0px 30px 5px;"> <div style="background-color: #F7FFE5; padding: 2px; flex-wrap: wrap"> text: {{ review.text }} </div></div>
+                    <div style="padding-bottom: 30px">email: {{ review.email }}</div>
+                <a href="#formReview" style="padding: 2px; color: #bbbbbb; border: 2px solid #000000;" onclick="addReview('{{ review.name }}' , '{{ review.id }}')">{% trans 'Ответить' %} </a>
+            </div>
+                {% for rew in review.reviews_set.all %}
+                 <div class="coment-otsef" style="padding-left: 30px; background-color: cadetblue; border: 2px solid #000000">
+                        <div style="">name: {{ rew.name }}</div>
+                        <div style="padding: 30px 0px 30px 5px;"> <div style="background-color: #F7FFE5; padding: 2px; max-width: 1000px; flex-wrap: wrap"> text: {{ rew.text }} </div></div>
+                        <div style="padding-bottom: 30px">email: {{ rew.email }}</div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+    </div>
+    <script src="{% static 'js/slider.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.todo_active').click(function(){
+                $('.sitebar,.image_pink').toggleClass('active');
+            });
+        });
+        $(document).ready(function(){
+            $('.tod_active').click(function(){
+                $('.footer_conteiner').toggleClass('active');
+            });
+        });
+        $(document).ready(function(){
+            $('.change-theme').click(function(){
+                $('body').toggleClass('active');
+            });
+        });
+        $(document).ready(function(){
+            $('.change-theme').click(function(){
+                $('.sitebar,.header,#ponter,#ponter2,.text,.numbertext,.items_sitebar_MORE,#descriptin').toggleClass('darc');
+            });
+        });
+        $(document).ready(function(){
+            $('.btn').click(function(){
+                alert('ви ТАКЖЕ можете посвонить продовцу')
+            });
+        });
+    </script>
+    <script>
+        function addReview(name,id){
+         document.getElementById('contactparent').value = id;
+         document.getElementById('contactcoment').innerText = `${name},`
+        }
+
+    </script>
+    <script>
+            const rating = document.querySelector('form[name=rating]');
+
+            rating.addEventListener("change", function (e) {
+                // Получаем данные из формы
+                let data = new FormData(this);
+                fetch(`${this.action}`, {
+                    method: 'POST',
+                    body: data
+                })
+                    .then(response => alert("Рейтинг установлен"))
+                    .catch(error => alert("Ошибка"))
+            });
+    </script>
+</body>
+</html>

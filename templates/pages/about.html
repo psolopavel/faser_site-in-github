@@ -1,0 +1,44 @@
+{% load static %}
+<title>{{ flatpage.title }}</title>
+<a href="/" style="padding: 10px 0px 0px 10px;color: #4c4c4c;"> <em>главная</em></a>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/MORE.css' %}">
+<div class="main" style="position: absolute; padding-top: 150px; padding-left: 50px; z-index: 500">
+    <p  style="padding-bottom: 100px; color: #4c4c4c; font-size: 19px">{{ flatpage.title }}</p>
+    <p class="about_text">{{ flatpage.content }}</p>
+</div>
+{% include 'include/footer.html' %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+ $(document).ready(function(){
+     $('.todo_active').click(function(){
+         $('.sitebar,.image_pink').toggleClass('active');
+     });
+ });
+ $(document).ready(function(){
+     $('.tod_active').click(function(){
+         $('.footer_conteiner').toggleClass('active');
+     });
+ });
+ $(document).ready(function(){
+     $('.change-theme').click(function(){
+         $('body,.about_text').toggleClass('active');
+     });
+ });
+ $(document).ready(function(){
+     $('.change-theme').click(function(){
+         $('.sitebar,.header,#ponter,#ponter2,.text,.numbertext,.items_sitebar_MORE,#descriptin').toggleClass('darc');
+     });
+ });
+ $(document).ready(function(){
+     $('.btn').click(function(){
+         alert('ви ТАКЖЕ можете посвонить продовцу')
+     });
+ });
+</script>
+<style>
+    .about_text.active{
+        color: white;
+        background-color: black;
+    }
+</style>

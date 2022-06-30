@@ -1,0 +1,67 @@
+{% load static %}
+{% load model_tag %}
+{% load static i18n %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<header class="header">
+        <div class="conteiner _conteiner">
+           <div class="left">
+               <p class="left_site-name" style="font-family:Sans-Serif;">Сайт видео-компроект</p>
+           </div>
+           <div class="right">
+            <nav class="header_menu menu">
+                <ul class="menu_list">
+                    <li class="menu_items" style="display: flex">
+                        <a href="{% url 'main' %}" class="menu_item1 menu_item" style="color: #929292;">{% trans 'главная' %}</a>
+                        <a href="/about" class="menu_item1 menu_item" style="color: #929292;">{% trans 'о нас' %}</a>
+                        {% if user.is_authenticated %}
+                            <span style="padding-right: 20px; color: #bbbbbb">{{ user.username }}:</span>
+                            <a href="{% url 'account_logout' %}" class="menu_item1 menu_item" style="color: #929292;">{% trans 'виход' %}</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="menu_item1 menu_item" style="color: #929292;">{% trans 'вход' %}</a>
+                            <a href="{% url 'account_signup' %}" class="menu_item1 menu_item" style="color: #929292;">{% trans 'регистрация' %}</a>
+                        {% endif %}
+<!--                        <div class="lollolol">-->
+<!--                            <a href="#" class="menu_item" style="color: #929292;">{% trans 'категорий' %}</a>-->
+<!--                            <div class="category_panel" style="padding-left: 20px">-->
+<!--                                <ul style="background-color: rgba(185,181,181,0.72); box-shadow: 2px 2px 3px black; padding: 5px 5px 5px 10px; border: 0.5px solid black; display: flex; flex-wrap: wrap">-->
+<!--                                    {% get_categories as categories  %}-->
+<!--                                    {% for category in categories %}-->
+<!--                                        <p style="cursor: pointer; padding-right: 5px; color: black"><a href="/">{{ category.name }},</a></p>-->
+<!--                                    {% endfor %}-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </li>
+                </ul>
+            </nav>
+            <div class="icons_window">
+                <a href="#" class="todo_active"><img src="{% static 'img/Type=Light surface, Size=20.jpg' %}" alt=""></a>
+                <a href="#" class="tod_active"><img src="{% static 'img/Ellipsis.png' %}" width="20px" height="23px" alt="" id="black"></a>
+            </div>
+           </div>
+        </div>
+</header>
+<style>
+    .category_panel.active{
+        display: none;
+    }
+    .category_panel p {
+        color: black;
+    }
+    left_site-name.active{
+        color: #F7FFE5;
+    }
+</style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.menu_item').click(function(){
+                $('.category_panel').toggleClass('active');
+            });
+        });
+            $(document).ready(function(){
+            $('.change-theme').click(function(){
+                $('.left_site-name').toggleClass('active');
+            });
+        });
+    </script>

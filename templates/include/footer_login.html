@@ -1,0 +1,28 @@
+{% load static %}
+{% load contact_tags %}
+{% load static i18n %}
+<footer class="footer">
+        <div class="footer_conteiner">
+            <div class="cinteiner-footer">
+            <div class="footer_image">
+                <img src="{% static 'img/heart-rounded.png' %}" alt="not_image">
+            </div>
+            <div class="foter_left-cntent">
+                <p class="item_foter_content">{% trans 'Главний чувак сайта ' %}+099 210 7655</p>
+                <p class="item_foter_content">{% trans 'Неглавний но тоже крутой  ' %}+0668056609</p>
+            </div>
+                <div class="flex_EN">
+                    <div class="subscribe_form" style="padding-left: 40px">
+                    {% contact_form %}
+                    </div>
+                    <div id="flex_footer" style="padding-left: 43px">
+                        <div class="wile_EN"><a href="/en">EN</a></div>
+                        <div class="black_RU"><a href="/ru" style="color: white">RU</a></div>
+                    </div>
+                </div>
+                <script src="script.js"></script>
+            </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,29 @@
+{% load static %}
+{% load contact_tags %}
+{% load static i18n %}
+<footer class="footer">
+        <div class="footer_conteiner">
+            <div class="cinteiner-footer">
+                <div class="foter_left-cntent">
+                    <p class="item_foter_content">{% trans 'Главний чувак сайта ' %}+099 210 7655</p>
+                    <p class="item_foter_content">{% trans 'Неглавний но тоже крутой  ' %}+0668056609</p>
+                </div>
+                <div class="subscribe_form">
+                    {% contact_form %}
+                </div>
+            <div id="flex_footer">
+                <div class="wile_EN"><a href="/en">EN</a></div>
+                <div class="black_RU"><a href="/ru" style="color: white">RU</a></div>
+            </div>
+            <div class="foter_right-cntent">
+                <div class="theme" style="display: flex;">
+                <img src="{% static 'img/image 10.png' %}" id="ponter" alt="" data-theme="darc" class="change-theme">
+                <img src="{% static 'img/sun.png' %}" alt="" height="37px" id="ponter2" data-theme="Light" class="change-theme">
+                </div>
+                <script src="script.js"></script>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</footer>

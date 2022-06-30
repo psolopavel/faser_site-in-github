@@ -1,0 +1,28 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<div style="position: absolute; left: 40%; top: 20px; background-color: #F7FFE5; padding: 0px 30px">
+  <div style="text-align: center">
+    <h1 style="background-color: #0E2231; color: #F7FFE5">{% trans "Sign Up" %}</h1>
+  </div>
+  <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+  <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}" style="padding-top: 20px">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <div style="padding-top: 20px">
+      <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </div>
+  </form>
+</div>
+<div id="particles-js"></div>
+<script src="{% static 'js/particles.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="superlists.lists.tests.home_page" />
+          <option value="superlists.django_site.main.models.Category.*" />
+          <option value="rest_framework.*" />
+          <option value="superlists.django_site.main.tests.test_urls.SimpleTestCase" />
+          <option value="mysite.main.models.Product.objects" />
+          <option value="mysite.main.models.Category.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

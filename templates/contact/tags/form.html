@@ -1,0 +1,5 @@
+<form action="{% url 'contact' %}" method="post">
+    {% csrf_token %}
+    {{ contact_form }}
+    <button>ok</button>
+</form>

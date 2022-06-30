@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load model_tag %}
+{% load static %}
+{% load static recaptcha3 %}
+{% load static i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" title="theme" href="#">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />
+
+    {% recaptcha_init %}
+    {% recaptcha_ready action_name='homepage' %}
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div>
+        <div class="sitebar" style="height: 40%">
+            <form action="{% url 'search' %}" method="get">
+                <div class="search">
+                    <input type="search" class="seach_input" name="q" placeholder="ведите предположитедбное название">
+                    <button type="submit">
+                        <span aria-hidden="true">
+                            <img src="{% static 'img/premium-icon-search-4024513.png' %}" height="20px" alt="" class="search_img">
+                        </span>
+                    </button>
+                </div>
+            </form>
+            <div class="filter">
+                <div class="filter-text">
+                    <div class="box_shadov1"></div>
+                    <p class="filter-item">{% trans 'фильтер' %}</p>
+                    <div class="box_shadov2"></div>
+                    <form method="get" action="{% url 'filter' %}" name="filter">
+                        <div class="filter-check_box" style="padding-top: 20px">
+                            <div class="check-box">
+                                <nav class="sitebar_menu" style="padding-bottom: 20px;">
+                                    <ul class="sitebar_menu_list">
+                                        {% get_categories as categories  %}
+                                        {% for category in categories %}
+                                             <li class="sitebar_menu_items">
+                                                 <div style="padding-left: 20px; padding-bottom: 30px"><button type="submit" style="max-width: 100px; width: 100px; border-radius: 20px; background-color: #002b36" value="{{ category.id }}" name="category"><span class="item-checbox" style="color: #ffffff">{{ category.name }}</span></button></div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+        {% include 'include/header.html' %}
+    <main class="main">
+                {% for model in product_list %}
+                    <div class="main-block" style="z-index: 2">
+                        <div class="content">
+                            <div style="background-color: #F7FFE5; border-radius: 15px 15px 0px 0px; text-align: center">
+                                <img src="{{ model.poster.url }}" alt="cover" class="content_image" height="150px" style="
+                                background-size: cover; background-repeat: no-repeat; background-position: 50% 50%;display: block;padding: 0 20%">
+                            </div>
+                            <div class="content_info">
+                                <div class="flex">
+                                    <p class="content_category">{{ model.title }}</p>
+                                    <p class="price">{{ model.price }}$</p>
+                                </div>
+                                <div class="too"><a href="{{ model.get_absolute_url }}" class="cotent_button">{% trans 'подробнее' %}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+    </main>
+
+        <div class="pagin">
+            <div class="grid-img-right mt-4 text-right bg bg1">
+              {% include 'include/pagination.html' %}
+            </div>
+        </div>
+          {% include 'include/footer.html' %}
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+<!--    <script src="{% static 'js/filter.js' %}"></script>-->
+<!--    <script src="http://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.todo_active').click(function(){
+                $('.sitebar,.image_pink').toggleClass('active');
+            });
+        });
+        $(document).ready(function(){
+            $('.tod_active').click(function(){
+                $('.footer_conteiner').toggleClass('active');
+            });
+        });
+        $(document).ready(function(){
+            $('.change-theme').click(function(){
+                $('body').toggleClass('active');
+            });
+        });
+        $(document).ready(function(){
+            $('.change-theme').click(function(){
+                $('.sitebar,.header,#ponter,#ponter2,.text,.numbertext,.items_sitebar_MORE,#descriptin,.item-checbox').toggleClass('darc');
+            });
+        });
+        $(document).ready(function(){
+            $('.btn').click(function(){
+                alert('ви ТАКЖЕ можете посвонить продовцу')
+            });
+        });
+    </script>
+</body>
+</html>

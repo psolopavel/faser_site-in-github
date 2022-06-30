@@ -1,0 +1,11 @@
+{% load static %}
+<div style="padding-left: 70px">
+<title>{% block head_title %} {% endblock head_title %}</title>
+
+{% block content %}
+
+{% endblock content %}
+</div>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/MORE.css' %}">
+{% include 'include/footer_login.html' %}

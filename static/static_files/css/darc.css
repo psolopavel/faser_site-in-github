@@ -1,0 +1,144 @@
+/* Указываем box sizing */
+
+/* Убираем внутренние отступы */
+
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd,
+a {
+  color: white;
+}
+body{
+    background-color: #161616;
+}
+/* Выставляем основные настройки по-умолчанию для body */
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+.header {
+  background-color: #080908;
+}
+.menu_item{
+  color: #ffffff;
+}
+.menu_item1 {
+  color: white;
+}
+.sitebar{
+  background-color: #000000;
+}
+.seach_input {
+  background-color: #ffffff;
+}
+
+.menu_item1:hover{
+  color: white;
+}
+.menu_item:hover{
+  color: white;
+}
+
+.filter-item {
+  color: #ffffff;
+}
+.box_shadov1{
+  background-color: #ffffff;
+}
+.box_shadov2{
+  background-color: #ffffff;
+}
+
+.cheked:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+.item-checbox {
+  color: #ffffff;
+}
+.text{
+  color: #ffffff;
+}
+.content {
+  background-color: #000000;
+  border: 2mm ridge rgba(94, 98, 20, 0.6);
+}
+.cotent_button {
+  background-color: #000000;
+  border: 1px solid white;
+}
+#black{
+  background-color: white;
+}
+
+.footer_conteiner {
+  background-color: #262626;
+}
+
+.item_foter_content {
+  color: rgb(255, 255, 255);
+}
+.foter_right-cntent{
+  color: black;
+}
+.wile_EN {
+  color: white;
+  background-color: rgb(12, 12, 12);
+}
+.black_RU {
+  color: black;
+  background-color: white;
+}
+
+.image_right{
+  background-color: black;
+}
+.change-theme[data-theme='darc']{
+    display: none;
+}
+
+.change-theme[data-theme='Light']{
+    display: block;
+}
+.items_sitebar_MORE1 {
+  background-color: #2d2d2d;
+}
+.items_sitebar_MORE2 {
+  background-color: #717171;
+}
+.items_sitebar_MORE3 {
+  background-color: #2d2d2d;
+}
+.items_sitebar_MORE4 {
+  background-color: #717171;
+}
+.items_sitebar_MORE5 {
+  background-color: #2d2d2d;
+}
+.items_sitebar_MORE6 {
+  background-color: #717171;
+}
+.search_img{
+  background-color: white;
+}
+.menu_item{
+  color: white;
+}
+
+
+
+
+
+
+
+
+
