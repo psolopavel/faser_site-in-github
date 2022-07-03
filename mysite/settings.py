@@ -15,18 +15,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-eh4cq1zk_4k6-ldhs$p0(ip1$8c2#vifyrpr#)80rmfeit(u-9'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -168,10 +156,7 @@ LOCALE_PATHS = (
 )
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static_root')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static', 'static_files'),
-)
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,  'static', 'media')
@@ -262,3 +247,9 @@ SITE_ID = 1
 
 SOCIAL_AUTH_FACEBOOK_KEY = '565284834205523'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'c6b12784c9589a0b3bdfe33114a19688'
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    from .prod_settings import*
